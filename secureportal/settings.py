@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-key-for-dev")
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 
-ALLOWED_HOSTS = ["fileportal.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
