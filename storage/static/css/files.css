@@ -1,0 +1,40 @@
+.page-title {
+    font-weight: 700;
+    text-align: center;
+    color:#2596be;
+}
+.table-striped th {
+    color: #2596be;
+    text-align: left;
+    font-weight: 700;
+}
+.downloadbtn
+{
+    background: #2596be;
+    color: white;
+}
+.delbtn,.cancelbtn
+{
+    background: #2596be;
+    color: white;
+}
+.btn-outline-primary:focus
+{
+    background: #2596be !important;
+    color: white;
+}
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+    .btn-group .btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    table td, table th {
+        white-space: nowrap;
+    }
+}

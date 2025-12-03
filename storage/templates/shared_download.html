@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/share_download.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="download-wrapper">
+
+    <div class="download-image-container">
+
+        <img src="{% static 'images/bgimg.avif' %}"
+             class="download-bg"
+             alt="Secure File">
+
+        <div class="download-overlay">
+
+            <h4 class="mb-2 text-white">Download Shared File</h4>
+
+            <p class="mb-1 text-white">File:
+                <strong>{{ file.file_name }}</strong>
+            </p>
+
+            <p class="text-light mb-3">
+                Enter your password to unlock and decrypt this file.
+            </p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    {% if "shared_download" in message.tags %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+
+            <div class="download-form-box">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="password"
+                           name="passphrase"
+                           class="form-control mb-3"
+                           placeholder="Your account password"
+                           required>
+
+                    <button class="btn btn-secondary w-100">
+                        Unlock & Download
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,190 @@
+
+.list-group-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 576px) {
+  .list-group-item .btn-group { width: 100%; display:flex; justify-content:space-between; margin-top:8px; }
+}
+pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; }
+
+.Securebtn,.btnsave,.unlockedbtn
+{background-color: #2596be;
+  color:#ffffff;
+
+}
+.Securetitle
+{
+    color: #2596be;
+}
+.btnunlock
+{
+    background-color: #2596be !important;
+  color:#ffffff !important;
+}
+.btnsavechange
+{
+        background-color: #2596be !important;
+  color:#ffffff !important;
+}
+.form-control {
+    border-radius: 6px;
+    box-shadow: none !important;
+    outline: none !important;      
+    border: 1px solid #2596be;      
+}
+   .unlock-card {
+        max-width: 480px;
+        margin: 30px auto;
+        padding: 25px;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .unlock-card h3 {
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+    .unlock-input {
+        border-radius: 8px;
+        height: 45px;
+    }
+
+    .btn-unlock {
+        width: 100%;
+        height: 45px;
+        border-radius: 8px;
+        background: #4a90e2;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+    }
+
+    .btn-unlock:hover {
+        background: #3a7acc;
+    }
+
+    .note-info {
+        font-size: 14px;
+        color: #666;
+    }
+    .note-item {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+}
+
+.note-title {
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.action-btn-group {
+    display: flex;
+    gap: 6px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action-btn.download {
+    background-color: #0d8ecf;
+    color: white !important;
+}
+.action-btn.download:hover {
+    background-color: #0b7ab2;
+}
+
+.action-btn.share {
+    background-color: #f5f5f5;
+    color: #555;
+    border: 1px solid #ccc;
+}
+.action-btn.share:hover {
+    background-color: #e2e2e2;
+}
+
+.action-btn.delete {
+    background-color: #fff0f0;
+    color: #d63031;
+    border: 1px solid #d63031;
+}
+.action-btn.delete:hover {
+    background-color: #ffe5e5;
+}
+/* Note content formatting */
+.note-content {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Action buttons container */
+.view-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Mobile layout */
+@media (max-width: 576px) {
+    .Securetitle {
+        font-size: 1.3rem;
+    }
+
+    .note-content {
+        font-size: 14px;
+    }
+
+    .view-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .view-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .action-btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+     .note-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 10px;
+    }
+    .note-title {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .note-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+}

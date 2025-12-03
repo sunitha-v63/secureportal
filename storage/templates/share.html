@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/share.css' %}">
+{% endblock %}
+{% block content %}
+
+<h2 class="mb-3 page-title">Share Encrypted File</h2>
+
+{% comment %} <p class="text-muted">
+    Select a registered user OR type an email manually to share the encrypted file.
+</p> {% endcomment %}
+
+{% comment %} <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">File to Share</label>
+        <input type="text" class="form-control" value="{{ file.file_name }}" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Recipient Email</label>
+        
+        <input list="usersList" 
+               name="email"
+               id="emailInput"
+               class="form-control"
+               placeholder="Type email or select from list"
+               required>
+
+        <datalist id="usersList">
+            {% for u in users %}
+                <option value="{{ u.email }}"></option>
+            {% endfor %}
+        </datalist>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Message (optional)</label>
+        <textarea name="message" class="form-control" rows="3"
+                  placeholder="Add a short message..."></textarea>
+    </div>
+
+    <button class="btn btn-secondary w-100">Send Secure Share Link</button>
+</form> {% endcomment %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">File to Share</label>
+        <input type="text" class="form-control" value="{{ file.file_name }}" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Recipient Email</label>
+        <input list="usersList" name="email" class="form-control"
+               placeholder="Type email or select from list" required>
+        <datalist id="usersList">
+            {% for u in users %}
+                <option value="{{ u.email }}"></option>
+            {% endfor %}
+        </datalist>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Your Account Password</label>
+        <input type="password" name="owner_password"
+               class="form-control"
+               placeholder="Enter your password" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Message (optional)</label>
+        <textarea class="form-control" name="message" rows="3"></textarea>
+    </div>
+
+    <button class="btn sendbtn w-100">Send Secure Share Link</button>
+</form>
+
+{% endblock %}

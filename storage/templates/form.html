@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/secure_notes.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-3">
+  <h3>{{ action|default:"Create" }} Secure Note</h3>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      {{ form.title.label_tag }}
+      {{ form.title }}
+      {% for err in form.title.errors %}<div class="text-danger">{{ err }}</div>{% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.content.label_tag }}
+      {{ form.content }}
+      {% for err in form.content.errors %}<div class="text-danger">{{ err }}</div>{% endfor %}
+    </div>
+
+    <button class="btn btnsave" type="submit">Save & Encrypt</button>
+    <a class="btn btn-secondary" href="{% url 'secure_notes_list' %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}

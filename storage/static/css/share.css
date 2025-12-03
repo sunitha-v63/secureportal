@@ -1,0 +1,66 @@
+.share-container {
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.page-title {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color:#2596be;
+}
+.sendbtn
+{
+    background: #2596be;
+    color:#fff;
+}
+.page-sub {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.share-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+}
+
+/* Custom Dropdown */
+.styled-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    appearance: none;
+    background-size: 16px;
+    font-size: 15px;
+    cursor: pointer;
+    background: #2596be;
+    color:#fff;
+}
+
+.styled-select:focus {
+    border-color: #6c757d;
+    background: #2596be;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108,117,125,0.25);
+}
+
+.styled-select option[disabled] {
+    color: #888;
+    
+}
+
+.btn-secondary {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border-color: #999 !important;  
+    }

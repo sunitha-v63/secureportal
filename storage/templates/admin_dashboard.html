@@ -1,0 +1,17 @@
+<h2>Admin Dashboard</h2>
+
+<h4>All Uploaded Encrypted Files</h4>
+<table class="table">
+    <tr>
+        <th>User</th>
+        <th>File Name</th>
+        <th>Uploaded At</th>
+    </tr>
+    {% for f in files %}
+    <tr>
+        <td>{{ f.user.email }}</td>
+        <td>{{ f.file_name }}</td>
+        <td>{{ f.uploaded_at }}</td>
+    </tr>
+    {% endfor %}
+</table>

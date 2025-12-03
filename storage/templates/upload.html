@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/upload.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="upload-container">
+
+    <h2 class="page-title text-center">Secure File Upload</h2>
+    <p class="limit-info text-center">
+        Max Files: <strong>10</strong> • Max Size: <strong>10MB</strong> • Allowed: JPG, PNG, PDF, TXT
+    </p>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if 'upload' in message.tags %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="upload-card" id="dropZone">
+
+            <p class="drag-text">Drag & Drop your file here</p>
+            <p class="or-text">OR</p>
+
+            <label class="file-label">
+                <input type="file" name="file" id="fileInput" class="file-input" required>
+                Browse File
+            </label>
+
+            <div id="filePreview" class="file-preview" style="display: none;">
+                <p><strong>Selected File:</strong></p>
+                <p id="fileName"></p>
+                <p id="fileSize"></p>
+            </div>
+
+            <button type="button" id="removeFileBtn" class="remove-btn">Remove File</button>
+
+            <button class="btn-upload" type="submit">Upload & Encrypt</button>
+
+            <div class="text-center mt-3 security-note">
+                <i class="bi bi-shield-lock-fill text-secondary"></i>
+                <span class="text-muted ms-1">All files are encrypted before storage</span>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <h3 class="sub-title mt-4">Your Encrypted Files</h3>
+
+    {% if files %}
+<div class="table-responsive">
+
+    <table class="table table-bordered align-middle file-table">
+        <thead class="table-light">
+            <tr>
+                <th>File Name</th>
+                <th>Uploaded</th>
+                <th class="text-center">Download</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for f in files %}
+            <tr>
+                <td class="fw-semibold">{{ f.file_name }}</td>
+                <td>{{ f.uploaded_at|date:"Y-m-d H:i" }}</td>
+                <td class="text-center">
+                    <a href="{% url 'download' f.id %}" class="btn btn-sm download-btn">
+                        <i class="bi bi-unlock-fill"></i> Decrypt
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% else %}
+    <p class="no-files text-muted text-center mt-3">No encrypted files uploaded yet.</p>
+{% endif %}
+
+
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{% static 'js/upload.js' %}"></script>
+
+{% endblock %}

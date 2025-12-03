@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="register-container">
+    <div class="register-box">
+        <h2 class="register-title">Create Your Account</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label><strong>Email</strong></label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-danger small">{{ form.email.errors|striptags }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label><strong>Password</strong></label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="text-danger small">{{ form.password1.errors|striptags }}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label><strong>Confirm Password</strong></label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="text-danger small">{{ form.password2.errors|striptags }}</div>
+                {% endif %}
+            </div>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <button class="btn registerbtn w-100 mt-2">Register</button>
+        </form>
+
+        <p class="mt-3 text-center">
+            Already have an account?
+           <a href="{% url 'login' %}" class="text-dark">Login</a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

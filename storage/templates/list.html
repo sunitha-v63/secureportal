@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/secure_notes.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-3">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="m-0 Securetitle">Secure Notes</h3>
+        <a class="btn Securebtn" href="{% url 'secure_note_create' %}">+ New Note</a>
+    </div>
+
+    {% if notes %}
+        {% for n in notes %}
+        <div class="note-item d-flex justify-content-between align-items-center">
+
+            <div>
+                <strong class="note-title d-block">
+                    {{ n.title|default:"(untitled)" }}
+                </strong>
+                <small class="text-muted">
+                    Updated: {{ n.updated_at|date:"Y-m-d H:i" }}
+                </small>
+            </div>
+
+           <div class="note-actions action-btn-group mt-2 mt-md-0">
+
+    <a class="action-btn download" href="{% url 'secure_note_view' n.id %}">
+        <i class="bi bi-eye"></i> View
+    </a>
+
+    <a class="action-btn share" href="{% url 'secure_note_edit' n.id %}">
+        <i class="bi bi-pencil-square"></i> Edit
+    </a>
+
+    <form method="post" action="{% url 'secure_note_delete' n.id %}">
+        {% csrf_token %}
+        <button class="action-btn delete" type="submit">
+            <i class="bi bi-trash"></i> Delete
+        </button>
+    </form>
+
+</div>
+
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-muted mt-3">You have no secure notes yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

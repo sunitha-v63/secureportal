@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/secure_notes.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h3 class="mb-3">Unlock Secure Note</h3>
+
+    <p class="text-muted">
+        This note is encrypted. Enter your password to unlock it for editing.
+    </p>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-danger py-2">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="border rounded p-3 shadow-sm">
+        {% csrf_token %}
+
+        <label class="form-label fw-semibold">Enter Your Password</label>
+        <input 
+            type="password" 
+            name="passphrase" 
+            class="form-control mb-3" 
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit" name="unlock" class="btn btnunlock w-100">
+            🔓 Unlock Note
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

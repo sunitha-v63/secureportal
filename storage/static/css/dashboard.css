@@ -1,0 +1,159 @@
+.dashboard-header {
+    background: white;
+    background-size: cover;
+    background-position: center;
+    padding: 20px 20px;
+    border-radius: 12px;
+    color: black;
+}
+.uploadbtn
+{
+    background: #2596be;
+    color: #eaeaea;
+}
+
+.stat-card {
+    background: #2596be;
+    color: #eaeaea;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+.accordion-button
+{
+    background: #2596be !important;
+    color: #eaeaea !important;
+}
+
+.accordion-button:focus,
+.accordion-button:active,
+.accordion-button:not(.collapsed),
+.accordion-button.collapsed:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+thead.table-dark {
+    background-color: #2596be !important;
+    color: #ffffff !important;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    color: #2596be;
+}
+.link1,.earmarkicon
+{
+     color: #2596be;
+}
+.textsecurity
+{
+    color: #2596be;
+}
+.openbtn
+{
+    background: #2596be;
+    color: #eaeaea;
+}
+.file-list {
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+}
+.btnMFA
+{
+    background-color: #2596be;
+    color: white;
+}
+.mfacard
+{
+    border-left: 5px solid #2596be;
+    border-color: #2596be;
+}
+.mfa-wrapper {
+    border-left: 4px solid #2596be;
+    border-color: #2596be;
+    border-radius: 10px;
+}
+.btnenable
+{
+    background-color: #2596be;
+    color: white;
+}
+.mfa-img {
+    max-width: 85%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+
+/* 
+.btnMFA:hover {
+    background-color: #0056d2;
+    color: white;
+} */
+
+.file-item
+{
+ border-color: #2596be;
+  border-left: 5px solid #2596be;
+}
+  .file-item:hover {
+    background: #f5f8ff;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+.shared-file-item {
+    transition: 0.25s ease;
+    border-left: 5px solid transparent;
+    border-color: #2596be;
+}
+
+ .shared-file-item:hover {
+    background: #f7faff;
+    /* border-left: 5px solid #2596be; */
+} 
+
+.ilock 
+{
+    color: #2596be;
+}
+.badge {
+    font-size: 0.85rem;
+}
+
+@media (max-width: 576px) {
+    .shared-file-item {
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .btn.uploadbtn,
+    .btn.btn-secondary,
+    .btn.btn-outline-secondary {
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+
+    .stat-card h5 {
+        font-size: 1.1rem;
+    }
+
+    .stat-card h6 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}

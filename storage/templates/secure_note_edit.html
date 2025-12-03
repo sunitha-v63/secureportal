@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/secure_notes.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-3 Securetitle">Edit Secure Note</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-danger py-2">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if not unlocked %}
+    <div class="card shadow-sm p-4">
+        <form method="post">
+            {% csrf_token %}
+            <label class="form-label">Enter password to Unlock Note</label>
+
+            <!-- FIXED: name="passphrase" -->
+            <input type="password" name="passphrase" class="form-control mb-3" required>
+
+            <button type="submit" class="btn btnunlock">Unlock Note</button>
+        </form>
+    </div>
+
+    {% else %}
+
+    <div class="card shadow-sm p-4">
+       <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Title</label>
+        <input type="text" name="title" class="form-control"
+               value="{{ note.title }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Content</label>
+        <textarea name="content" class="form-control" rows="7" required>{{ note_decrypted }}</textarea>
+    </div>
+
+    <button class="btn btnsavechange">Save Changes</button>
+    <a href="{% url 'secure_note_view' note.id %}" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+    </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}

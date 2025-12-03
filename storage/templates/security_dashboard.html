@@ -1,0 +1,194 @@
+ {% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">🔐 Security Dashboard</h2>
+
+    <!-- LOGIN ACTIVITY -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <strong>Login Activity</strong>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Location</th>
+                        <th>Browser</th>
+                        <th>OS</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in login_logs %}
+                    <tr>
+                        <td>{{ log.ip }}</td>
+                        <td>{{ log.city }}, {{ log.country }}</td>
+                        <td>{{ log.browser }}</td>
+                        <td>{{ log.os }}</td>
+                        <td>{{ log.timestamp }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" class="text-center p-3">No login data found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD ACTIVITY -->
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <strong>File Download Activity</strong>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>File</th>
+                        <th>IP Address</th>
+                        <th>Location</th>
+                        <th>Browser</th>
+                        <th>OS</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in download_logs %}
+                    <tr>
+                        <td>{{ log.file_name }}</td>
+                        <td>{{ log.ip }}</td>
+                        <td>{{ log.city }}, {{ log.country }}</td>
+                        <td>{{ log.browser }}</td>
+                        <td>{{ log.os }}</td>
+                        <td>{{ log.timestamp }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="6" class="text-center p-3">No download data found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %} 
+
+{% comment %} 
+{% extends "layout.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock %} {% block content %}
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4 col-12">
+    <div class="stat-card text-center">
+      <h5>Total Files</h5>
+      <h6>{{ files|length }}</h6>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-12">
+    <div class="stat-card text-center">
+      <h5>Received Shares</h5>
+      <h6>{{ received_files|length }}</h6>
+    </div>
+  </div>
+
+  <div class="col-md-4 col-12">
+    <div class="stat-card text-center">
+      <h5>Storage Used</h5>
+      <h6>{{ storage_used }} MB</h6>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex flex-wrap gap-3 mb-4">
+  <a href="{% url 'upload' %}" class="btn uploadbtn">
+    <i class="bi bi-cloud-upload fs-6"></i> Upload File
+  </a>
+  <a href="{% url 'files' %}" class="btn btn-secondary">
+    <i class="bi bi-folder fs-6"></i> My Files
+  </a>
+  <a href="{% url 'files' %}#shared" class="btn btn-outline-secondary">
+    <i class="bi bi-share fs-6"></i> Shared With Me
+  </a>
+</div>
+
+<h4 class="section-title">Recent Uploads</h4>
+<div class="file-list mt-3">
+  {% if files %}
+  <ul class="list-group shadow-sm rounded-3 overflow-hidden">
+    {% for f in files %}
+    <li class="list-group-item py-3 px-3 file-item">
+      <div class="row align-items-center">
+        
+        <div class="col-12 col-md-6 d-flex align-items-center gap-3 mb-2 mb-md-0">
+          <i class="bi bi-file-earmark-text earmarkicon fs-4"></i>
+          <span class="fw-semibold text-break">{{ f.file_name }}</span>
+        </div>
+        <div class="col-12 col-md-6 text-md-end text-muted small">
+          <i class="bi bi-clock me-1"></i>
+          {{ f.uploaded_at|date:"Y-m-d H:i" }}
+        </div>
+
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+  <p class="text-muted text-center py-3">
+    <i class="bi bi-folder-x fs-4 d-block mb-2"></i>
+    No uploaded files yet.
+  </p>
+  {% endif %}
+</div>
+
+
+<h4 class="section-title">Files Shared With You</h4>
+
+<div class="file-list mt-3">
+  {% if received_files %}
+  <ul class="list-group shadow-sm rounded-3 overflow-hidden">
+    {% for s in received_files %}
+    <li class="list-group-item py-3 px-3 file-item">
+      <div class="row align-items-center">
+        
+        <div class="col-12 col-md-8 d-flex align-items-start gap-3 mb-3 mb-md-0">
+          <i class="bi bi-folder-symlink link1 fs-4"></i>
+
+          <div class="text-break">
+            <strong class="fw-semibold">{{ s.file.file_name }}</strong><br>
+            <small class="text-muted">
+              <i class="bi bi-person-circle me-1"></i>
+              From: {{ s.owner.email }}
+            </small>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 text-md-end">
+          <a 
+            href="{% url 'shared_download' s.id %}" 
+            class="btn btn-sm openbtn px-3"
+          >
+            <i class="bi bi-box-arrow-in-down-right me-1"></i> Open
+          </a>
+        </div>
+
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+  <p class="text-muted text-center py-3">
+    <i class="bi bi-inbox fs-4 d-block mb-2"></i>
+    No files shared with you.
+  </p>
+  {% endif %}
+</div>
+
+
+{% endblock %} {% endcomment %}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<div class="reset-container">
+    <div class="reset-box">
+
+        <h2 class="reset-title">Verify OTP</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label><strong>Enter OTP</strong></label>
+            <input type="text" name="otp" class="form-control mb-3" placeholder="6-digit OTP" maxlength="6" required>
+
+            <button class="btn btn-secondary btn-reset">Verify OTP</button>
+        </form>
+
+        <p class="reset-footer">
+            <a href="{% url 'forgot_password' %}" class="text-dark">Resend OTP</a>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+.page-wrapper {
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+.upload-card, .file-list-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+    margin-bottom: 40px;
+    animation: fadeIn 0.6s ease;
+}
+
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* File Input */
+.label {
+    font-weight: bold;
+}
+
+.input-file {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.input-file:focus {
+    border-color: #009688;
+    box-shadow: 0 0 6px rgba(0, 150, 136, 0.4);
+}
+
+/* File Info Box */
+.file-info {
+    background: #f3f7ff;
+    padding: 12px;
+    border-left: 4px solid #007bff;
+    margin-bottom: 18px;
+    border-radius: 6px;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-upload {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #009688;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-upload:hover {
+    background: #00796b;
+}
+
+.list-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.custom-table thead {
+    background: #222;
+    color: #fff;
+}
+
+.custom-table th, .custom-table td {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table tr:hover {
+    background: #f5f5f5;
+}
+
+.empty {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+}
+
+.btn-table {
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.btn-download {
+    background: #9da0a2;
+}
+
+.btn-delete {
+    background: #d9534f;
+}
+
+.btn-download:hover {
+    background: #5c5d5e;
+}
+
+.btn-delete:hover {
+    background: #c9302c;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

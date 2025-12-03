@@ -1,0 +1,1 @@
+web: gunicorn secureportal.wsgi:application

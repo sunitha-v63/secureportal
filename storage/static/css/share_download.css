@@ -1,0 +1,87 @@
+.download-wrapper {
+    max-width: 720px;
+    margin: 40px auto;
+}
+
+.download-image-container {
+    position: relative;
+    width: 100%;
+}
+
+.download-bg {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    display: block;
+    object-fit: cover;
+}
+
+.download-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 40px 30px;
+    border-radius: 14px;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    overflow-y: auto; 
+}
+
+.download-form-box {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 22px;
+    border-radius: 12px;
+    margin-top: 18px;
+}
+
+.form-control:focus {
+    border-color: #555 !important;
+    box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+
+    .download-bg {
+        height: 480px;        
+        object-fit: cover;
+    }
+
+    .download-overlay {
+        padding: 18px;
+        justify-content: flex-start; 
+    }
+
+    .download-overlay h4 {
+        font-size: 1.3rem;
+    }
+
+    .download-overlay p {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    .download-form-box {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .download-bg {
+        height: 450px;  
+    }
+
+    .download-overlay {
+        padding: 14px;
+    }
+
+    .download-overlay h4 {
+        font-size: 1.2rem;
+    }
+}

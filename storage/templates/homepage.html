@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="hero-banner">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1 class="hero-title">
+            Secure File Storage & Encryption Portal
+        </h1>
+
+        <p class="hero-subtitle">
+            Upload, encrypt, store and share your files securely with 
+            advanced AES-256 + RSA encryption. Only YOU can decrypt your data.
+        </p>
+
+    </div>
+
+</div>
+    <h3 class="text-center fw-bold mt-5 mb-4 title1">Why Choose SecurePortal?</h3>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-shield-lock feature-icon"></i>
+                <h5 class="mt-3">AES-256 Encryption</h5>
+                <p class="text-dark">Files encrypted before upload using military-grade AES encryption.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-key feature-icon"></i>
+                <h5 class="mt-3">RSA Key Pair</h5>
+                <p class="text-dark">Each user has unique public/private RSA keys for secure key handling.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-cloud-arrow-up feature-icon"></i>
+                <h5 class="mt-3">Secure Sharing</h5>
+                <p class="text-dark">Share encrypted files using safe re-encryption for your recipient.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-check2-circle feature-icon"></i>
+                <h5 class="mt-3">Integrity Checked</h5>
+                <p class="text-dark">SHA-256 hash ensures your files are never corrupted or altered.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-person-lock feature-icon"></i>
+                <h5 class="mt-3">Zero-Knowledge</h5>
+                <p class="text-dark">Private keys are encrypted; even the server can't read your data.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <i class="bi bi-speedometer feature-icon"></i>
+                <h5 class="mt-3">Fast & Seamless</h5>
+                <p class="text-dark">Simple UI with fast uploads and instant decryption on download.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="mfa-banner my-5 p-4 rounded-4 shadow-lg">
+
+    <div class="row align-items-center">
+
+        <div class="col-12 col-md-7 mb-4 mb-md-0">
+            <h2 class="fw-bold text-white mb-3">
+                <i class="bi bi-shield-lock-fill"></i> Multi-Factor Authentication (MFA)
+            </h2>
+
+            <p class="text-light mb-3">
+                Strengthen your account security by enabling an extra verification step.
+                Even if someone knows your password, they cannot access your account without your MFA code.
+            </p>
+
+            <ul class="text-light small ps-3 mb-4 fs-6">
+                <li>Time-based One-Time Passwords (TOTP)</li>
+                <li>Compatible with Google Authenticator, Authy, Microsoft Authenticator</li>
+                <li>Protects against phishing & password theft</li>
+            </ul>
+
+            {% if request.user.profile.mfa_enabled %}
+                <a href="{% url 'mfa_disable' %}"
+                   class="btn btn-light btn-sm fw-semibold">
+                    <i class="bi bi-shield-x"></i> Disable MFA
+                </a>
+            {% else %}
+                <a href="{% url 'mfa_setup' %}" 
+                   class="btn btn-light btn-sm fw-semibold">
+                    <i class="bi bi-shield-check"></i> Enable MFA
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="col-12 col-md-5 text-center">
+            <img src="{% static 'images/mfa2.png' %}"
+                 alt="MFA Security"
+                 class="img-fluid mfa-img">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

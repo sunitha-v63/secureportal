@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/mfs.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-6 col-md-8 col-12">
+
+        <div class="card p-4 shadow-sm">
+
+            <h4 class="mb-2">Enable MFA (Google Authenticator)</h4>
+            <p class="text-muted">Scan the QR code below using any Authenticator app.</p>
+
+            <div class="text-center my-3">
+                <img src="{{ qr_data }}" alt="QR Code" class="img-fluid" style="max-width:240px;">
+            </div>
+
+            <p>
+                <strong>Manual Key:</strong> 
+                <code class="text-primary">{{ secret }}</code>
+            </p>
+
+            <p class="text-muted small">
+                If camera doesn't work, enter the manual key into your Authenticator app.
+            </p>
+
+            <form method="post" class="mt-3">
+                {% csrf_token %}
+
+                <label class="form-label">Enter 6-digit code</label>
+                <input 
+                    type="text" 
+                    name="token" 
+                    maxlength="6" 
+                    class="form-control mb-3"
+                    placeholder="123456"
+                    required>
+
+                <button class="btn Enablemfa w-100 mb-2">
+                    Confirm & Enable MFA
+                </button>
+
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary w-100">
+                    Cancel
+                </a>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

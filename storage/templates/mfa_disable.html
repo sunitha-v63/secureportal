@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-12">
+    <div class="card p-3 shadow-sm">
+      <h4>Disable MFA</h4>
+      <p>Disabling will remove two-factor protection for your account.</p>
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger">Disable MFA</button>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
