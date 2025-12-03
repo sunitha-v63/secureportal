@@ -98,21 +98,29 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = "smtp-relay.brevo.com"
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
-EMAIL_TIMEOUT = 30
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sumisunitha06@gmail.com'   
+EMAIL_HOST_PASSWORD = 'sqjz nfgh tvxh nsbi' 
+DEFAULT_FROM_EMAIL = 'sumisunitha06@gmail.com'
 
-EMAIL_HOST_USER = os.environ.get("BREVO_USERNAME")
-EMAIL_HOST_PASSWORD = os.environ.get("BREVO_PASSWORD")
+# EMAIL_HOST = "smtp-relay.brevo.com"
+# EMAIL_PORT = 465
+# EMAIL_USE_SSL = True
+# EMAIL_USE_TLS = False
+# EMAIL_TIMEOUT = 30
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_HOST_USER = os.environ.get("BREVO_USERNAME")
+# EMAIL_HOST_PASSWORD = os.environ.get("BREVO_PASSWORD")
+
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
-DEFAULT_FROM_EMAIL = os.environ.get("BREVO_USERNAME")
+# DEFAULT_FROM_EMAIL = os.environ.get("BREVO_USERNAME")
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
